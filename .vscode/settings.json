@@ -1,0 +1,8 @@
+{
+    "python.analysis.extraPaths": [
+        "/home/data/sds/projects/High-Engneer-Math",
+        "/home/data/sds/projects/High-Engneer-Math/dataset",
+        "/home/data/sds/projects/High-Engneer-Math/model",
+        "/home/data/sds/projects/High-Engneer-Math/utils",
+    ]
+}
