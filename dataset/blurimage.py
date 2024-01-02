@@ -83,9 +83,10 @@ class BlurSyn(object):
     
     
 class BlurryImageDataset:
-    def __init__(self, datadir, fns=None, image_size=(224, 224)):
+    def __init__(self, datadir, fns=None, image_size=(224, 224), val=False):
         self.datadir = datadir
         self.image_size = image_size
+        self.transform = not val
         
         sortkey = lambda key: os.path.split(key)[-1]
         self.paths = sorted(make_dataset(datadir, fns), key=sortkey)
@@ -99,7 +100,8 @@ class BlurryImageDataset:
         i, j, h, w = get_params(image, self.image_size)
         image = TF.crop(image, i, j, h, w)
         
-        image = transform(image)
+        if self.transform:
+            image = transform(image)
         
         # Randomly select blur effect
         
